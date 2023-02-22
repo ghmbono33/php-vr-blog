@@ -1,5 +1,6 @@
 <?php
 require_once("conexion.php");
+require_once("helpers.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,10 +25,7 @@ require_once("conexion.php");
     <nav id="menu">
       <ul>
         <li><a href="index.php">Inicio</a></li>
-        <li><a href="">Categoría 1</a></li>
-        <li><a href="">Categoría 2</a></li>
-        <li><a href="">Categoría 3</a></li>
-        <li><a href="">Categoría 4</a></li>
+        <?= obtenerCategorias(); ?>
         <li><a href="">Sobre mí</a></li>
         <li><a href="">Contacto</a></li>
       </ul>

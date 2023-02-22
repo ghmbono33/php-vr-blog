@@ -1,3 +1,3 @@
 <?php
-$kk = "";
-echo empty($kk2);
+$kk = [];
+$kk["kk"] = "";

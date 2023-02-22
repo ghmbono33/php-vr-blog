@@ -55,10 +55,10 @@ if (isset($_POST)) {
     if ($guardar) {
       $_SESSION['completado'] = "El registro se ha completado con éxito";
     } else {
-      $_SESSION['errores']['general'] = "Fallo al guardar el usuario en la BD!!";
+      $_SESSION['err_registro']['general'] = "Fallo al guardar el usuario en la BD!!";
     }
   } else {
-    $_SESSION['errores'] = $errores;
+    $_SESSION['err_registro'] = $errores;
   }
 }
 
