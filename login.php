@@ -2,16 +2,16 @@
 if (!isset($_POST)) header('Location: index.php');
 
 require_once 'includes/conexion.php';
+require_once 'includes/helpers.php';
 
 // Iniciar sesión
 if (!isset($_SESSION)) {
   session_start();
 }
 
-// Recorger los valores del formulario de registro
-//  Con mysqli_real_escape_string podemos escapar las comillas, etc
-$email = isset($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
-$password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
+$email = postBDatos("email");
+$password = postBDatos("password");
+
 // Array de errores
 $errores = [];
 

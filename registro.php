@@ -3,6 +3,7 @@ if (isset($_POST)) {
 
   // Conexión a la base de datos
   require_once 'includes/conexion.php';
+  require_once 'includes/helpers.php';
 
   // Iniciar sesión
   if (!isset($_SESSION)) {
@@ -11,10 +12,10 @@ if (isset($_POST)) {
 
   // Recorger los valores del formulario de registro
   //  Con mysqli_real_escape_string podemos escapar las comillas, etc
-  $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, $_POST['nombre']) : false;
-  $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, $_POST['apellidos']) : false;
-  $email = isset($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
-  $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
+  $nombre = postBDatos("nombre");
+  $apellidos = postBDatos("apellidos");
+  $email = postBDatos("email");
+  $password = postBDatos("password");
 
   // Array de errores
   $errores = [];
@@ -40,10 +41,8 @@ if (isset($_POST)) {
     $errores['password'] = "La contraseña está vacía";
   }
 
-  $guardar_usuario = false;
 
   if (count($errores) == 0) {
-    $guardar_usuario = true;
 
     // Cifrar la contraseña
     $password_segura = password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]);

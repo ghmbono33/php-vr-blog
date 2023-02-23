@@ -1,7 +1,13 @@
-SELECT * FROM categorias WHERE id = 1;
-1
-SELECT * FROM categorias WHERE id = 1;
-1
-SELECT * FROM categorias WHERE id = 1;
-he pasado por aquí
-1
+INSERT INTO categorias (NULL, 'nueva')
+error general
+INSERT INTO categorias (nombre) values ('chinchiland')
+completo
+INSERTo INTO categorias (nombre) values ('adfasdf')
+error general
+INSERT INTO categorias (nombre) values ('cat fleki')
+completo
+INSERT INTO categorias (nombre) values ('cat solet')
+completo
+INSERT INTO categorias (nombre) values ('new  cat')
+completo
+error categoria

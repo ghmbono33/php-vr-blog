@@ -1,6 +1,6 @@
 <?php
-// require_once 'conexion.php';
-function mostrarError($tipoError, $campoError,)
+require_once 'conexion.php';
+function mostrarError($tipoError, $campoError)
 {
   $alerta = '';
   if (isset($_SESSION[$tipoError][$campoError])) {
@@ -24,20 +24,28 @@ function borrarErrores()
 {
   $_SESSION['err_registro'] = null;
   $_SESSION['err_login'] = null;
+  $_SESSION['err_categoria'] = null;
   $_SESSION['errores_entrada'] = null;
   $_SESSION['completado'] = null;
 }
 
-function obtenerCategorias()
-// Devuelve una lista <li><a href=""></a></li> de las categorías
+function obtenerCategorias($lista = true)
+// $lista = true devuelve un <li>; false un <option>
 {
   $sql = "SELECT * FROM categorias ORDER BY id ASC;";
   $categorias = mysqli_query($GLOBALS["db"], $sql);
   $html = "";
   while ($categoria = mysqli_fetch_assoc($categorias)) {
-    $html .=
-      '<li><a href="categoria.php?id=' . $categoria["id"] . '">' .
-      $categoria["nombre"] . '</a></li>';
+    if ($lista) {
+      // Devuelve una lista <li><a href=""></a></li> de las categorías
+      $html .=
+        '<li><a href="categoria.php?id=' . $categoria["id"] . '">' .
+        $categoria["nombre"] . '</a></li>';
+    } else {
+      // Devuelve opciones del desplegable
+      $html .=
+        '<option value="' .  $categoria["id"] . '">' . $categoria["nombre"] . ' </option>';
+    }
   }
   return $html;
 }
@@ -68,11 +76,21 @@ function obtenerUltimasEntradas($limit = null, $categoria = null, $busqueda = nu
     $html .= '
     <a href="">
       <h2>' . $entrada["titulo"] . '</h2>
+      <span class="fecha">' . $entrada["categoria"] . ' | ' .
+      date_format(date_create($entrada["fecha"]), "d/m/Y")  .
+      '</span>
       <p>' . substr($entrada["descripcion"], 0, 150)  . '</p>
     </a> ';
   }
   return $html;
 }
+
+function postBDatos($varPost)
+{
+  // Devuelve el post preparado para guardar en BD
+  //  Con mysqli_real_escape_string podemos escapar las comillas, etc
+  return  isset($_POST[$varPost]) ?  mysqli_real_escape_string($GLOBALS["db"], $_POST[$varPost]) : "";
+};
 
 function entrada_log($texto)
 {

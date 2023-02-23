@@ -1,9 +1,12 @@
 <?php
 require_once "includes/cabecera.php";
+require_once "includes/lateral.php";
+if (isset($_SESSION["usuario"])) {
+  var_dump($_SESSION["usuario"]);
+}
 
 ?>
 
-<?php require_once "includes/lateral.php" ?>
 <!-- CAJA PRINCIPAL -->
 <div id="principal">
   <h1>Últimas entradas</h1>
