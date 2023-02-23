@@ -15,7 +15,7 @@ require_once "includes/lateral.php";
   }
 </style>
 <div id="principal">
-  <h1>Crear categorías</h1>
+  <h1>Crear Entradas</h1>
   <p>
     Añade nuevas entradas al blog para que los usuarios puedan
     leerlas y disfrutar de nuestro contenido.

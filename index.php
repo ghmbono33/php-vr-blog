@@ -1,9 +1,6 @@
 <?php
 require_once "includes/cabecera.php";
 require_once "includes/lateral.php";
-if (isset($_SESSION["usuario"])) {
-  var_dump($_SESSION["usuario"]);
-}
 
 ?>
 

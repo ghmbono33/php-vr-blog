@@ -8,8 +8,8 @@ require_once "includes/helpers.php";
 
 $nombre = postBDatos("nombre");
 $errores = [];
-if (empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/", $nombre)) {
-  $errores['nombre'] = "El nombre no es válido";
+if (empty($nombre) || is_numeric($nombre)) {
+  $errores['nombre'] = "El nombre no es válido. No se permiten números";
 }
 
 if (count($errores) == 0) {

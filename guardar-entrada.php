@@ -1,5 +1,5 @@
 <?php
-if (!$_POST) {
+if (!$_POST || !isset($_SESSION["usuario"])) {
   // para que no entren por la url
   header("location:index.php");
 }
@@ -8,27 +8,33 @@ require_once "includes/helpers.php";
 
 $titulo = postBDatos("titulo");
 $descripcion = postBDatos("descripcion");
+$categoria = postBDatos("categoria");
 $errores = [];
-if (empty($nombre)) {
-  $errores['nombre'] = "El nombre no es válido";
+if (empty($titulo)) {
+  $errores['titulo'] = "Introduzca el título";
 }
 if (empty($descripcion)) {
-  $errores['descripcion'] = "El descripción no es válida";
+  $errores['descripcion'] = "Introduzca la descripción";
+}
+if (empty($categoria)) {
+  $errores['categoria'] = "Introduzca la categoría";
 }
 
 if (count($errores) == 0) {
-  $sql = "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion) values ('$nombre')";
+  $idUsuario = $_SESSION["usuario"]["id"];
+  $sql = "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('$idUsuario', '$categoria', '$titulo', '$descripcion', CURDATE())";
   entrada_log($sql);
   $query = mysqli_query($GLOBALS["db"], $sql);
   if ($query) {
     entrada_log("completo");
-    $_SESSION['completado'] = "La categoría se ha guardado correctamente.";
+    $_SESSION['completado'] = "La entrada se ha guardado correctamente.";
   } else {
     entrada_log("error general");
-    $_SESSION['err_categoria']['general'] = "Fallo al guardar la categoría en la BD!!";
+    $_SESSION['err_entrada']['general'] = "Fallo al guardar la entrada en la BD!!";
   }
 } else {
-  entrada_log("error categoria");
-  $_SESSION['err_categoria'] = $errores;
+  entrada_log("error entrada");
+  $_SESSION['err_entrada'] = $errores;
 }
-header("location:crear-categoria.php");
+header("location:crear-entrada.php");

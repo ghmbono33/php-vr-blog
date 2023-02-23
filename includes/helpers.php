@@ -25,7 +25,7 @@ function borrarErrores()
   $_SESSION['err_registro'] = null;
   $_SESSION['err_login'] = null;
   $_SESSION['err_categoria'] = null;
-  $_SESSION['errores_entrada'] = null;
+  $_SESSION['err_entrada'] = null;
   $_SESSION['completado'] = null;
 }
 

@@ -1,13 +1,11 @@
-INSERT INTO categorias (NULL, 'nueva')
-error general
-INSERT INTO categorias (nombre) values ('chinchiland')
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion) 
+          values ('6', '1', 'titulo', 'descrip )
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion) 
+          values ('6', '1', 'tit', 'descrip')
 completo
-INSERTo INTO categorias (nombre) values ('adfasdf')
-error general
-INSERT INTO categorias (nombre) values ('cat fleki')
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '3', 'uno', 'dos', CURDATE())
 completo
-INSERT INTO categorias (nombre) values ('cat solet')
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '1', 'tit2', 'descrip2', CURDATE())
 completo
-INSERT INTO categorias (nombre) values ('new  cat')
-completo
-error categoria
