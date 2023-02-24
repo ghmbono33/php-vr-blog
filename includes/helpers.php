@@ -22,6 +22,7 @@ function mostrarCompletado()
 
 function borrarErrores()
 {
+  $_SESSION['err_misdatos'] = null;
   $_SESSION['err_registro'] = null;
   $_SESSION['err_login'] = null;
   $_SESSION['err_categoria'] = null;
@@ -51,7 +52,7 @@ function obtenerCategorias($lista = true)
 }
 
 
-function obtenerUltimasEntradas($limit = null, $categoria = null, $busqueda = null)
+function obtenerEntradas($limit = null, $categoria = null, $busqueda = null)
 // Devuelve las entradas eh html
 {
   $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e " .

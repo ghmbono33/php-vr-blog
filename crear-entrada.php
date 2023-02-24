@@ -4,16 +4,27 @@ require_once "includes/cabecera.php";
 require_once "includes/lateral.php";
 ?>
 <!-- CAJA PRINCIPAL -->
-<style>
+<!-- <style>
   input[type="submit"] {
     display: inline !important;
+    margin-right: 20px;
   }
 
   input[type="button"] {
     display: inline !important;
     background-color: grey;
   }
-</style>
+
+  select {
+    padding: 5px;
+    display: block;
+    margin: 10px 0;
+  }
+
+  #botones {
+    text-align: center;
+  }
+</style> -->
 <div id="principal">
   <h1>Crear Entradas</h1>
   <p>
@@ -33,10 +44,11 @@ require_once "includes/lateral.php";
     <?= mostrarError("err_entrada", "descripcion") ?>
 
     <label for="nombre">Categoría:</label>
-    <select name="categoria"> <?= obtenerCategorias(false) ?> </select>
-
-    <input type="submit" value="Guardar" />
-    <input type="button" value="Salir" onclick="window.location.replace('index.php')">
+    <select id="chinchi" name="categoria"> <?= obtenerCategorias(false) ?> </select>
+    <div id="botones">
+      <input type="submit" value="Guardar" id="guardar" />
+      <input type="button" value="Salir" id="salir" onclick="window.location.replace('index.php')">
+    </div>
     <?= mostrarError("err_entrada", "general") ?>
   </form>
   <?php borrarErrores(); ?>

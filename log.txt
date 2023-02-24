@@ -9,3 +9,22 @@ completo
 INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
           values ('6', '1', 'tit2', 'descrip2', CURDATE())
 completo
+INSERT__ INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '1', 'chinch', 'aaaa', CURDATE())
+error general
+INSERT__ INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '1', 'entrada flekichin', 'flekichin es un pardalet molt bonic', CURDATE())
+error general
+error entrada
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '1', 'fleki', 'flekillo', CURDATE())
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '1', '1', '1', CURDATE())
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '2', '2', '2', CURDATE())
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+          values ('6', '3', '3', '3', CURDATE())
+completo
