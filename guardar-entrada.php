@@ -1,8 +1,10 @@
 <?php
-if (!$_POST || !isset($_SESSION["usuario"])) {
+session_start();
+if (!isset($_SESSION["usuario"])  || !isset($_POST)) {
   // para que no entren por la url
   header("location:index.php");
 }
+
 
 require_once "includes/helpers.php";
 $id = $_POST["id"];
@@ -16,7 +18,7 @@ if (empty($titulo)) {
 if (empty($descripcion)) {
   $errores['descripcion'] = "Introduzca la descripción";
 }
-if (empty($categoria)) {
+if (empty($categoria_id)) {
   $errores['categoria'] = "Introduzca la categoría";
 }
 
@@ -25,11 +27,15 @@ if (count($errores) == 0) {
   $sql = "";
   if ($id) {
     // Modificamos 
-    $sql = "UPDATE FROM ENTRADAS SET  usuario_id = $idUsuario, categoria_id = $categoria_id, titulo = '$titulo', descripcion = '$descripcion', fecha = CURDATE()";
+    $sql = 
+    "UPDATE ENTRADAS SET  
+      usuario_id = $idUsuario, categoria_id = $categoria_id, titulo = '$titulo', descripcion = '$descripcion', fecha = CURDATE()
+     WHERE id=$id";
   } else {
-    $sql= "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+    $sql = "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
             values ('$idUsuario', '$categoria_id', '$titulo', '$descripcion', CURDATE());";
   }
+  entrada_log($sql);
   echo "<h3>$sql</h3>";
   $query = mysqli_query($GLOBALS["db"], $sql);
   if ($query) {

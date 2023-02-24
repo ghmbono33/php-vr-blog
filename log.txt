@@ -1,36 +1,40 @@
-INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion) 
-          values ('6', '1', 'titulo', 'descrip )
-INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion) 
-          values ('6', '1', 'tit', 'descrip')
+error entrada
+error entrada
+error entrada
+error entrada
+error entrada
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', '111', '1111111', CURDATE());
 completo
 INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '3', 'uno', 'dos', CURDATE())
+            values ('6', '3', 'chin1', 'chinchi1', CURDATE());
 completo
 INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '1', 'tit2', 'descrip2', CURDATE())
+            values ('6', '1', 'chin1....', 'chinchi1.....', CURDATE());
 completo
-INSERT__ INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '1', 'chinch', 'aaaa', CURDATE())
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('', '2', 'chinchiland', 'chinchiland.............', CURDATE());
 error general
-INSERT__ INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '1', 'entrada flekichin', 'flekichin es un pardalet molt bonic', CURDATE())
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', 'pppppppppppp', 'pppppppppp', CURDATE());
+completo
+UPDATE FROM ENTRADAS SET  usuario_id = 6, categoria_id = 3, titulo = 'pp', descripcion = 'ppp', fecha = CURDATE()
 error general
-error entrada
-INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '1', 'fleki', 'flekillo', CURDATE())
+UPDATE ENTRADAS SET  usuario_id = 6, categoria_id = 1, titulo = 'pp', descripcion = 'ppp', fecha = CURDATE()
 completo
-INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '1', '1', '1', CURDATE())
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = 'fleki', descripcion = 'flekichin', fecha = CURDATE()
+     WHERE id=10
 completo
-INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '2', '2', '2', CURDATE())
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = '1', descripcion = 'ppp', fecha = CURDATE()
+     WHERE id=3
 completo
-INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('6', '3', '3', '3', CURDATE())
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = '2', descripcion = 'ppp', fecha = CURDATE()
+     WHERE id=2
 completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = '3', descripcion = 'ppp', fecha = CURDATE()
+     WHERE id=1
 completo
-completo
-completo
-completo
-error entrada
-error entrada
