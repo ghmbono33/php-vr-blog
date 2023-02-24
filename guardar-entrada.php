@@ -5,7 +5,7 @@ if (!$_POST || !isset($_SESSION["usuario"])) {
 }
 
 require_once "includes/helpers.php";
-
+$crear = $_POST["crear"];
 $titulo = postBDatos("titulo");
 $descripcion = postBDatos("descripcion");
 $categoria = postBDatos("categoria");
@@ -22,9 +22,12 @@ if (empty($categoria)) {
 
 if (count($errores) == 0) {
   $idUsuario = $_SESSION["usuario"]["id"];
+  if (!$crear) {
+    // Modificamos por lo que borramos el actual registro y luego lo insertamos
+    $sql = "DELETE entradas WHERE id="
+  }
   $sql = "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
           values ('$idUsuario', '$categoria', '$titulo', '$descripcion', CURDATE())";
-  entrada_log($sql);
   $query = mysqli_query($GLOBALS["db"], $sql);
   if ($query) {
     entrada_log("completo");

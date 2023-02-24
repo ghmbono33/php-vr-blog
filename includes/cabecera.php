@@ -18,7 +18,7 @@ require_once("helpers.php");
   <header id="cabecera">
     <div id="logo">
       <a href="index.php">
-        Blog
+        informe
       </a>
     </div>
     <!-- MENÚ -->

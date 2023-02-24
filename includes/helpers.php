@@ -28,6 +28,20 @@ function borrarErrores()
   $_SESSION['err_categoria'] = null;
   $_SESSION['err_entrada'] = null;
   $_SESSION['completado'] = null;
+  
+}
+
+
+function obtenerUnaCategoria($id)
+{
+  $sql = "SELECT * FROM categorias WHERE id = $id;";
+  $categorias = mysqli_query($GLOBALS["db"], $sql);
+  $resultado = [];
+  if ($categorias && mysqli_num_rows($categorias) >= 1) {
+    $resultado = mysqli_fetch_assoc($categorias);
+  }
+
+  return $resultado;
 }
 
 function obtenerCategorias($lista = true)
@@ -52,7 +66,7 @@ function obtenerCategorias($lista = true)
 }
 
 
-function obtenerEntradas($limit = null, $categoria = null, $busqueda = null)
+function obtenerEntradas($limit = null, $categoria = null, $busqueda = null, $id=null)
 // Devuelve las entradas eh html
 {
   $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e " .
@@ -65,23 +79,30 @@ function obtenerEntradas($limit = null, $categoria = null, $busqueda = null)
   if (!empty($busqueda)) {
     $sql .= "WHERE e.titulo LIKE '%$busqueda%' ";
   }
+  if (!empty($id)) {
+    $sql.= "WHERE e.id = $id ";
+  }
 
-  $sql .= "ORDER BY e.id DESC ";
+  $sql .= " ORDER BY e.id DESC ";
 
   if ($limit) {
     $sql .= "LIMIT 4";
   }
+  // echo "<h3>$sql</h3>";
   $entradas = mysqli_query($GLOBALS["db"], $sql);
   $html = "";
   while ($entrada = mysqli_fetch_assoc($entradas)) {
     $html .= '
-    <a href="">
-      <h2>' . $entrada["titulo"] . '</h2>
-      <span class="fecha">' . $entrada["categoria"] . ' | ' .
-      date_format(date_create($entrada["fecha"]), "d/m/Y")  .
-      '</span>
-      <p>' . substr($entrada["descripcion"], 0, 150)  . '</p>
-    </a> ';
+    <article>
+      <a href="mnto-entrada.php?id='. $entrada["id"] . ' ">
+        <h2>' . $entrada["titulo"] . '</h2>
+        <span class="fecha">' . $entrada["categoria"] . ' | ' .
+        date_format(date_create($entrada["fecha"]), "d/m/Y")  .
+        '</span>
+        <p>' . substr($entrada["descripcion"], 0, 150)  . '</p>
+      </a>
+    </article>
+    ';
   }
   return $html;
 }
@@ -98,4 +119,8 @@ function entrada_log($texto)
   $log = fopen("log.txt", "a");
   // fwrite($log, date("d/m/Y H:i:s"));
   fwrite($log, "$texto\n");
+}
+
+function alerta($mensaje, $tipo="error") {
+	echo '<br><div class="alerta alerta' . $tipo . 'No hay entradas en esta categoría</div>';
 }

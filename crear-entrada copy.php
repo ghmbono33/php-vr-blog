@@ -3,28 +3,7 @@ require_once "includes/redireccion.php"; /* Comprueba si está logueado y sino v
 require_once "includes/cabecera.php";
 require_once "includes/lateral.php";
 ?>
-<!-- CAJA PRINCIPAL -->
-<!-- <style>
-  input[type="submit"] {
-    display: inline !important;
-    margin-right: 20px;
-  }
 
-  input[type="button"] {
-    display: inline !important;
-    background-color: grey;
-  }
-
-  select {
-    padding: 5px;
-    display: block;
-    margin: 10px 0;
-  }
-
-  #botones {
-    text-align: center;
-  }
-</style> -->
 <div id="principal">
   <h1>Crear Entradas</h1>
   <p>
