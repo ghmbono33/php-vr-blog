@@ -5,14 +5,13 @@ require_once "includes/lateral.php";
 require_once "includes/conexion.php";
 require_once "includes/helpers.php";
 
-$crear = false;
+$id = 0;
 $titulo = $descripcion = $categoria_id = "";
 
-if (!isset($_GET["id"])) {
-  $crear = true;
-} else {
-  // obtenemos la información de la entrada
-  $sql = "SELECT * FROM entradas WHERE id=" . $_GET["id"];
+if (isset($_GET["id"]) && $_GET["id"]) {
+  // obtenemos la información de la entrada, si la entrada es 0 (para crear) no pasará por aquí 
+  $id = $_GET["id"];
+  $sql = "SELECT * FROM entradas WHERE id=" . $id;
   $query = mysqli_query($db, $sql);
   if ($query && mysqli_num_rows($query)== 1) {
     $registro = mysqli_fetch_assoc($query);
@@ -29,7 +28,7 @@ if (!isset($_GET["id"])) {
 
 <div id="principal">
   <?php 
-    if ($crear){
+    if (!$id){
       echo  "
         <h1>Crear Entradas</h1>
         <p>
@@ -43,7 +42,7 @@ if (!isset($_GET["id"])) {
   ?>
 
   <form action="guardar-entrada.php" method="post">
-    <input type="hidden" name="crear" value=<?=$crear?1:0?>>
+    <input type="hidden" name="id" value="<?=$id?>">
     <?= mostrarCompletado() ?>
     <label>Título:
     <input type="text" name="titulo"  value ="<?=$titulo?>"/>
@@ -56,7 +55,7 @@ if (!isset($_GET["id"])) {
     <?= mostrarError("err_entrada", "descripcion") ?>
 
     <label>Categoría:
-    <select name="categoria" value="<?=$categoria_id?>">  
+    <select name="categoria_id" value="<?=$categoria_id?>">  
       <?=obtenerCategorias(false)?>
     </select>
     </label>

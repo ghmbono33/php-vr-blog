@@ -28,3 +28,9 @@ completo
 INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
           values ('6', '3', '3', '3', CURDATE())
 completo
+completo
+completo
+completo
+completo
+error entrada
+error entrada

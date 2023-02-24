@@ -5,10 +5,10 @@ if (!$_POST || !isset($_SESSION["usuario"])) {
 }
 
 require_once "includes/helpers.php";
-$crear = $_POST["crear"];
+$id = $_POST["id"];
 $titulo = postBDatos("titulo");
 $descripcion = postBDatos("descripcion");
-$categoria = postBDatos("categoria");
+$categoria_id = postBDatos("categoria_id");
 $errores = [];
 if (empty($titulo)) {
   $errores['titulo'] = "Introduzca el título";
@@ -22,12 +22,15 @@ if (empty($categoria)) {
 
 if (count($errores) == 0) {
   $idUsuario = $_SESSION["usuario"]["id"];
-  if (!$crear) {
-    // Modificamos por lo que borramos el actual registro y luego lo insertamos
-    $sql = "DELETE entradas WHERE id="
+  $sql = "";
+  if ($id) {
+    // Modificamos 
+    $sql = "UPDATE FROM ENTRADAS SET  usuario_id = $idUsuario, categoria_id = $categoria_id, titulo = '$titulo', descripcion = '$descripcion', fecha = CURDATE()";
+  } else {
+    $sql= "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('$idUsuario', '$categoria_id', '$titulo', '$descripcion', CURDATE());";
   }
-  $sql = "INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
-          values ('$idUsuario', '$categoria', '$titulo', '$descripcion', CURDATE())";
+  echo "<h3>$sql</h3>";
   $query = mysqli_query($GLOBALS["db"], $sql);
   if ($query) {
     entrada_log("completo");
@@ -40,4 +43,4 @@ if (count($errores) == 0) {
   entrada_log("error entrada");
   $_SESSION['err_entrada'] = $errores;
 }
-header("location:crear-entrada.php");
+header("location:mnto-entrada.php?id=$id");
