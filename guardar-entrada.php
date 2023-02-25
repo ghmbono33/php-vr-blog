@@ -5,9 +5,23 @@ if (!isset($_SESSION["usuario"])  || !isset($_POST)) {
   header("location:index.php");
 }
 
-
 require_once "includes/helpers.php";
+require_once "includes/conexion.php";
+
 $id = $_POST["id"];
+if ($_POST["eliminar"]) {
+  // Eliminamos la entrada
+  $sql = "DELETE FROM entradas WHERE id=$id";
+  $query = mysqli_query($db, $sql);
+  // header("location:index.php");
+  $mensaje = "Se ha eliminado la entrada";
+  if (!$query) {
+    $mensaje = "No se ha podido eliminar la entrada";
+  }
+  echo "<script>alert('$mensaje');window.location.href='index.php'</script>";
+  die();
+}
+
 $titulo = postBDatos("titulo");
 $descripcion = postBDatos("descripcion");
 $categoria_id = postBDatos("categoria_id");
@@ -27,8 +41,8 @@ if (count($errores) == 0) {
   $sql = "";
   if ($id) {
     // Modificamos 
-    $sql = 
-    "UPDATE ENTRADAS SET  
+    $sql =
+      "UPDATE ENTRADAS SET  
       usuario_id = $idUsuario, categoria_id = $categoria_id, titulo = '$titulo', descripcion = '$descripcion', fecha = CURDATE()
      WHERE id=$id";
   } else {

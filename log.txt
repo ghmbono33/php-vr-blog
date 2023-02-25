@@ -38,3 +38,49 @@ UPDATE ENTRADAS SET
       usuario_id = 6, categoria_id = 1, titulo = '3', descripcion = 'ppp', fecha = CURDATE()
      WHERE id=1
 completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', 'aaa', 'aaaaaaaaaaaaaaaaaaa', CURDATE());
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', 'bbbbbbb', 'bbbbbbbbbbbbbbbbbbb', CURDATE());
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '5', 'ccc', 'cccccccccccccc', CURDATE());
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '3', 'entrada  chinchis', 'chinchis..................', CURDATE());
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = 'aaa.....', descripcion = 'aaaaaaaaaaaaaaaaaaa', fecha = CURDATE()
+     WHERE id=17
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = 'aaa.....', descripcion = 'aaa\'aaaa', fecha = CURDATE()
+     WHERE id=17
+completo
+error entrada
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = 'entrada  chinchis', descripcion = 'chinchis..................', fecha = CURDATE()
+     WHERE id=20
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = 'ccc', descripcion = 'cccccccccccccc', fecha = CURDATE()
+     WHERE id=19
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = 'bbbbbbb', descripcion = 'bbbbbbbbbbbbbbbbbbb', fecha = CURDATE()
+     WHERE id=18
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', '1', '1', CURDATE());
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', '2', '2', CURDATE());
+completo
+INSERT INTO entradas (usuario_id, categoria_id, titulo, descripcion, fecha ) 
+            values ('6', '1', '3', '3', CURDATE());
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 1, titulo = '3', descripcion = '33333', fecha = CURDATE()
+     WHERE id=23
+completo
