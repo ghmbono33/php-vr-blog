@@ -4,8 +4,6 @@
 <footer id="pie">
   <p>Desarrollado por MBA &copy; 2023</p>
 </footer>
-<!-- </body> -->
+</body>
 
-
-
-<!-- </html> -->
+</html>

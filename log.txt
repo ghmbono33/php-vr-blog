@@ -84,3 +84,20 @@ UPDATE ENTRADAS SET
       usuario_id = 6, categoria_id = 1, titulo = '3', descripcion = '33333', fecha = CURDATE()
      WHERE id=23
 completo
+error categoria
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 8, titulo = 'new2.......', descripcion = 'new2.............', fecha = CURDATE()
+     WHERE id=12
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 3, titulo = 'nueva', descripcion = 'nuevaaaaaaaaaaaa', fecha = CURDATE()
+     WHERE id=8
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 8, titulo = 'nueva', descripcion = 'nuevaaaaaaaaaaaa', fecha = CURDATE()
+     WHERE id=8
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 3, titulo = 'nueva', descripcion = 'nuevaaaaaaaaaaaa', fecha = CURDATE()
+     WHERE id=8
+completo

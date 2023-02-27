@@ -1,6 +1,6 @@
 <?php
-require_once("conexion.php");
-require_once("helpers.php");
+require_once "conexion.php";
+require_once "helpers.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

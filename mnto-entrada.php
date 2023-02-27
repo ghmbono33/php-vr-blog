@@ -19,7 +19,7 @@ if (isset($_GET["id"]) && $_GET["id"]) {
     $descripcion = $registro["descripcion"];
     $categoria_id = $registro["categoria_id"];
   } else {
-    alerta("No existe ninguna entrada con ese código");
+    echo '<br><div class="alerta alerta-error" "No existe ninguna entrada con ese código </div>';
     die();
   }
 }
@@ -56,8 +56,8 @@ if (isset($_GET["id"]) && $_GET["id"]) {
     <?= mostrarError("err_entrada", "descripcion") ?>
 
     <label>Categoría:
-      <select name="categoria_id" value="<?= $categoria_id ?>">
-        <?= obtenerCategorias(false) ?>
+      <select name="categoria_id">
+        <?= obtenerCategorias(false, $categoria_id) ?>
       </select>
     </label>
     <div id="botones">
@@ -80,7 +80,6 @@ if (isset($_GET["id"]) && $_GET["id"]) {
   function borrar() {
     const d = document;
     d.getElementById("eliminar").value = d.getElementById("id").value
-    alert(d.getElementById("eliminar").value);
     myForm.submit();
   }
 </script>

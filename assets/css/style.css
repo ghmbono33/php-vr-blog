@@ -54,7 +54,7 @@ body {
 
 /*LOGOTIPO*/
 #logo {
-  float: left;
+  /* float: left; */
   width: 540px;
   height: 110px;
 }

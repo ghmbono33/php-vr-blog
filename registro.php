@@ -12,6 +12,8 @@ if (isset($_POST)) {
 
   // Recorger los valores del formulario de registro
   //  Con mysqli_real_escape_string podemos escapar las comillas, etc
+  $_SESSION["registro"] = $_POST;
+  var_dump($_SESSION["registro"]);
   $nombre = postBDatos("nombre");
   $apellidos = postBDatos("apellidos");
   $email = postBDatos("email");
@@ -35,18 +37,22 @@ if (isset($_POST)) {
   if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errores['email'] = "El email no es válido";
   }
+  // Nos aseguramos que no haya otro usuario con el mismo email
+  $sql = "SELECT email FROM usuarios WHERE trim(lcase(email)) = '" . trim(strtolower($email)) . "'";
+  $query = mysqli_query($db, $sql);
+  if ($query && mysqli_num_rows($query) > 0) {
+    $errores['email'] = "Ya existe otro usuario con el mismo email!!";
+  }
 
   // Validar la contraseña
   if (empty($password)) {
     $errores['password'] = "La contraseña está vacía";
   }
 
-
   if (count($errores) == 0) {
 
     // Cifrar la contraseña
     $password_segura = password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]);
-
     // INSERTAR USUARIO EN LA TABLA USUARIOS DE LA BBDD
     $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellidos', '$email', '$password_segura', CURDATE());";
     $guardar = mysqli_query($db, $sql);
