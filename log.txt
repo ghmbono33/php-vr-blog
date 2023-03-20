@@ -101,3 +101,13 @@ UPDATE ENTRADAS SET
       usuario_id = 6, categoria_id = 3, titulo = 'nueva', descripcion = 'nuevaaaaaaaaaaaa', fecha = CURDATE()
      WHERE id=8
 completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 8, titulo = 'nuevaAAAAA', descripcion = 'ADFASDFAS\'\'\'\'DFASDF', fecha = CURDATE()
+     WHERE id=9
+completo
+UPDATE ENTRADAS SET  
+      usuario_id = 6, categoria_id = 2, titulo = 'nueva-------AAAAA', descripcion = 'ADFASDFAS\'\'\'\'DFASDF', fecha = CURDATE()
+     WHERE id=9
+completo
+INSERT INTO categorias (nombre) values ('cat 33')
+completo

@@ -44,22 +44,27 @@ require_once "helpers.php";
     <div id="register" class="bloque">
       <h3>Regístrate</h3>
       <?php
-      $registro = myIsset($_SESSION["registro"], []);
+      if (isset($_SESSION["registro"])) {
+        $registro = $_SESSION["registro"];
+      } else {
+        $registro = ["nombre" => "", "apellidos" => "", "email" => "", "password" => ""];
+      }
+
       echo mostrarCompletado();
 
       ?>
       <form action="registro.php" method="POST">
         <label for="nombre">nombre:</label>
         <?= mostrarError("err_registro", "nombre");  ?>
-        <input type="text" name="nombre" id="nombre" value="<?= myIsset($registro["nombre"]) ?>">
+        <input type="text" name="nombre" id="nombre" value="<?= $registro["nombre"] ?>">
         <label for="apellidos">apellidos:</label>
-        <input type="text" name="apellidos" id="apellidos" value="<?= myIsset($registro["apellidos"]) ?>">
+        <input type="text" name="apellidos" id="apellidos" value="<?= $registro["apellidos"] ?>">
         <?= mostrarError("err_registro", "apellidos");  ?>
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" value="<?= myIsset($registro["email"]) ?>">
+        <input type="email" name="email" id="email" value="<?= $registro["email"] ?>">
         <?= mostrarError("err_registro", "email");  ?>
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" value="<?= myIsset($registro["password"]) ?>">
+        <input type="password" name="password" id="password" value="<?= $registro["password"] ?>">
         <?= mostrarError("err_registro", "password");  ?>
         <input type="submit" value="Registrarse">
         <?= mostrarError("err_registro", "general");  ?>

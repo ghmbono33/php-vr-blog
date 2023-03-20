@@ -49,6 +49,7 @@ function obtenerCategorias($lista = true, $categoria_id = 0)
   $sql = "SELECT * FROM categorias ORDER BY id ASC;";
   $categorias = mysqli_query($GLOBALS["db"], $sql);
   $html = "";
+
   while ($categoria = mysqli_fetch_assoc($categorias)) {
     if ($lista) {
       // Devuelve una lista <li><a href=""></a></li> de las categorías
@@ -67,7 +68,7 @@ function obtenerCategorias($lista = true, $categoria_id = 0)
 
 
 function obtenerEntradas($limit = null, $categoria = null, $busqueda = null, $id = null)
-// Devuelve las entradas eh html
+// Devuelve las entradas en html
 {
   $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e " .
     "INNER JOIN categorias c ON e.categoria_id = c.id ";
